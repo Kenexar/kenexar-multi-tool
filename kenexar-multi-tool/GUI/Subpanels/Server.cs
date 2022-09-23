@@ -58,12 +58,12 @@ namespace kenexar_multi_tool.GUI.Subpanels
                             LabelStatus.BeginInvoke(updateLable);
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception _)
                     {
                         test += 1;
                         Action updateLable = () =>
                         {
-                            LabelStatus.Text = Main.test + "Offline - " + textBox.Text;
+                            LabelStatus.Text = "Offline - " + textBox.Text;
                             LabelStatus.ForeColor = System.Drawing.Color.FromArgb(179, 45, 60);
                         };
                         LabelStatus.BeginInvoke(updateLable);

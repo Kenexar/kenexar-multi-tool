@@ -30,20 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnTest2 = new FontAwesome.Sharp.IconButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BtnMailTools = new FontAwesome.Sharp.IconButton();
+            this.LogoBox = new System.Windows.Forms.PictureBox();
             this.BtnServer = new FontAwesome.Sharp.IconButton();
             this.ContentPanel = new System.Windows.Forms.Panel();
             this.header = new System.Windows.Forms.Panel();
+            this.BtnExit = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoBox)).BeginInit();
+            this.header.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.panel1.Controls.Add(this.btnTest2);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.BtnMailTools);
+            this.panel1.Controls.Add(this.LogoBox);
             this.panel1.Controls.Add(this.BtnServer);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -53,37 +55,38 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // btnTest2
+            // BtnMailTools
             // 
-            this.btnTest2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTest2.FlatAppearance.BorderSize = 0;
-            this.btnTest2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTest2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTest2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(34)))), ((int)(((byte)(57)))));
-            this.btnTest2.IconChar = FontAwesome.Sharp.IconChar.Satellite;
-            this.btnTest2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(34)))), ((int)(((byte)(57)))));
-            this.btnTest2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnTest2.IconSize = 35;
-            this.btnTest2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTest2.Location = new System.Drawing.Point(0, 116);
-            this.btnTest2.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTest2.Name = "btnTest2";
-            this.btnTest2.Size = new System.Drawing.Size(212, 47);
-            this.btnTest2.TabIndex = 2;
-            this.btnTest2.Text = "Test 2";
-            this.btnTest2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTest2.UseVisualStyleBackColor = false;
-            this.btnTest2.Click += new System.EventHandler(this.btnTest2_Click);
+            this.BtnMailTools.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnMailTools.FlatAppearance.BorderSize = 0;
+            this.BtnMailTools.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMailTools.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnMailTools.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(34)))), ((int)(((byte)(57)))));
+            this.BtnMailTools.IconChar = FontAwesome.Sharp.IconChar.MailBulk;
+            this.BtnMailTools.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(34)))), ((int)(((byte)(57)))));
+            this.BtnMailTools.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BtnMailTools.IconSize = 35;
+            this.BtnMailTools.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnMailTools.Location = new System.Drawing.Point(0, 116);
+            this.BtnMailTools.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnMailTools.Name = "BtnMailTools";
+            this.BtnMailTools.Size = new System.Drawing.Size(212, 47);
+            this.BtnMailTools.TabIndex = 2;
+            this.BtnMailTools.Text = "Mail Tools";
+            this.BtnMailTools.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnMailTools.UseVisualStyleBackColor = false;
+            this.BtnMailTools.Click += new System.EventHandler(this.btnTest2_Click);
             // 
-            // pictureBox1
+            // LogoBox
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(27, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(158, 47);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.LogoBox.Image = ((System.Drawing.Image)(resources.GetObject("LogoBox.Image")));
+            this.LogoBox.Location = new System.Drawing.Point(27, 11);
+            this.LogoBox.Name = "LogoBox";
+            this.LogoBox.Size = new System.Drawing.Size(158, 47);
+            this.LogoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.LogoBox.TabIndex = 1;
+            this.LogoBox.TabStop = false;
+            this.LogoBox.Click += new System.EventHandler(this.LogoBox_Click_1);
             // 
             // BtnServer
             // 
@@ -92,7 +95,7 @@
             this.BtnServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnServer.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnServer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(34)))), ((int)(((byte)(57)))));
-            this.BtnServer.IconChar = FontAwesome.Sharp.IconChar.Satellite;
+            this.BtnServer.IconChar = FontAwesome.Sharp.IconChar.Server;
             this.BtnServer.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(34)))), ((int)(((byte)(57)))));
             this.BtnServer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnServer.IconSize = 35;
@@ -118,6 +121,7 @@
             // header
             // 
             this.header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(34)))), ((int)(((byte)(57)))));
+            this.header.Controls.Add(this.BtnExit);
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(0, 0);
             this.header.Name = "header";
@@ -125,6 +129,22 @@
             this.header.TabIndex = 2;
             this.header.Paint += new System.Windows.Forms.PaintEventHandler(this.header_Paint);
             this.header.MouseDown += new System.Windows.Forms.MouseEventHandler(this.header_MouseDown);
+            // 
+            // BtnExit
+            // 
+            this.BtnExit.BackColor = System.Drawing.Color.Red;
+            this.BtnExit.FlatAppearance.BorderSize = 0;
+            this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnExit.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.BtnExit.IconColor = System.Drawing.Color.Black;
+            this.BtnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BtnExit.IconSize = 10;
+            this.BtnExit.Location = new System.Drawing.Point(1062, 0);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(49, 10);
+            this.BtnExit.TabIndex = 0;
+            this.BtnExit.UseVisualStyleBackColor = false;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // Main
             // 
@@ -140,7 +160,8 @@
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoBox)).EndInit();
+            this.header.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -148,13 +169,11 @@
         #endregion
 
         private Panel panel1;
-        private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton BtnServer;
-        private TextBox textBox1;
-        private PictureBox pictureBox1;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton btnTest2;
+        private PictureBox LogoBox;
+        private FontAwesome.Sharp.IconButton BtnMailTools;
         private Panel ContentPanel;
         private Panel header;
+        private FontAwesome.Sharp.IconButton BtnExit;
     }
 }

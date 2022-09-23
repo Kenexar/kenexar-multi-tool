@@ -19,7 +19,6 @@ namespace kenexar_multi_tool.GUI.Subpanels
 
         private void label1_Click(object sender, EventArgs e)
         {
-            Main.test = "Click :D";
         }
     }
 }

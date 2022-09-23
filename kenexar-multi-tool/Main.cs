@@ -4,8 +4,7 @@ namespace kenexar_multi_tool
 {
     public partial class Main : Form
     {
-        private Form activeForm = new GUI.Subpanels.Server();
-        public static string test = "Hey";
+        private Form activeForm = null;
 
         private Form ServerForm = new GUI.Subpanels.Server();
         private Form TestForm = new GUI.Subpanels.Test2();
@@ -40,6 +39,7 @@ namespace kenexar_multi_tool
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
+
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -52,7 +52,6 @@ namespace kenexar_multi_tool
 
         private void Main_Load(object sender, EventArgs e)
         {
-
         }
 
         private void logobox_Click(object sender, EventArgs e)
@@ -68,17 +67,19 @@ namespace kenexar_multi_tool
         private void BtnServer_Click(object sender, EventArgs e)
         {
             OpenChildForm(ServerForm);
+            LogoBox.Focus();
         }
 
         private void btnTest2_Click(object sender, EventArgs e)
         {
             OpenChildForm(TestForm);
-
+            LogoBox.Focus();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
+            OpenChildForm(ServerForm);
+            LogoBox.Focus();
         }
 
         private void header_Paint(object sender, PaintEventArgs e)
@@ -93,6 +94,16 @@ namespace kenexar_multi_tool
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void LogoBox_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
