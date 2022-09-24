@@ -13,7 +13,7 @@ namespace kenexar_multi_tool.GUI.Subpanels
 {
     public partial class Server : Form
     {
-        private EventWaitHandle ewh = new EventWaitHandle(false, EventResetMode.AutoReset);
+        private EventWaitHandle ewh = new(false, EventResetMode.AutoReset);
         public Server()
         {
             InitializeComponent();
@@ -27,47 +27,49 @@ namespace kenexar_multi_tool.GUI.Subpanels
 
         private void Server_Load(object sender, EventArgs e)
         {
-            HttpClient client = new HttpClient();
-            int test = 0;
+            HttpClient client = new();
 
             _ = Task.Factory.StartNew(() =>
             {
                 while (true)
                 {
-                    try
-                    {
-                        HttpResponseMessage response = client.GetAsync(new Uri(textBox.Text)).Result;
-                        test++;
-                        if (response.IsSuccessStatusCode)
-                        {
-                            Action updateLable = () =>
-                            {
-                                LabelStatus.Text = test + "Online";
-                                LabelStatus.ForeColor = System.Drawing.Color.FromArgb(123, 230, 163);
-                            };
-                            LabelStatus.BeginInvoke(updateLable);
+                    Uri uriResult;
+                    bool result = Uri.TryCreate(textBox.Text, UriKind.Absolute, out uriResult)
+                        && uriResult.Scheme == Uri.UriSchemeHttp;
 
-                        }
-                        else
-                        {
-                            Action updateLable = () =>
-                            {
-                                LabelStatus.Text = "Offline";
-                                LabelStatus.ForeColor = System.Drawing.Color.FromArgb(179, 45, 60);
-                            };
-                            LabelStatus.BeginInvoke(updateLable);
-                        }
-                    }
-                    catch (Exception _)
+                    if (!result)
                     {
-                        test += 1;
                         Action updateLable = () =>
                         {
-                            LabelStatus.Text = "Offline - " + textBox.Text;
+                            LabelStatus.Text = "Invalid URL";
+                            LabelStatus.ForeColor = System.Drawing.Color.FromArgb(179, 45, 60);
+                        };
+                        LabelStatus.BeginInvoke(updateLable);
+                        continue;
+                    }
+
+                    HttpResponseMessage response = client.GetAsync(uriResult).Result;
+    
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Action updateLable = () =>
+                        {
+                            LabelStatus.Text = "Online";
+                            LabelStatus.ForeColor = System.Drawing.Color.FromArgb(123, 230, 163);
+                        };
+                        LabelStatus.BeginInvoke(updateLable);
+
+                    }
+                    else
+                    {
+                        Action updateLable = () =>
+                        {
+                            LabelStatus.Text = "Offline";
                             LabelStatus.ForeColor = System.Drawing.Color.FromArgb(179, 45, 60);
                         };
                         LabelStatus.BeginInvoke(updateLable);
                     }
+                  
                     ewh.WaitOne(1000);
                 }
             });

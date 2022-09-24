@@ -7,7 +7,12 @@ namespace kenexar_multi_tool
         private Form activeForm = null;
 
         private Form ServerForm = new GUI.Subpanels.Server();
-        private Form TestForm = new GUI.Subpanels.Test2();
+        private Form MailForm = new GUI.Subpanels.MailTool();
+        private Form SettingsForm = new GUI.Subpanels.Settings();
+
+        private Button activeButton = null;
+        private Color baseColor = System.Drawing.Color.FromArgb(20, 20, 20);
+        private Color activeColor = System.Drawing.Color.FromArgb(41, 41, 41);
 
         private void OpenChildForm(Form childFrom)
         {
@@ -21,6 +26,17 @@ namespace kenexar_multi_tool
             ContentPanel.Tag = childFrom;
             childFrom.BringToFront();
             childFrom.Show();
+        }
+
+        private void SetActiveButton(Button button)
+        {
+            if (activeButton == null)
+                activeButton = button;
+
+            activeButton.BackColor = baseColor;
+     
+            activeButton = button;
+            activeButton.BackColor = activeColor;
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -50,41 +66,25 @@ namespace kenexar_multi_tool
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void Main_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void logobox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconPictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnServer_Click(object sender, EventArgs e)
         {
             OpenChildForm(ServerForm);
+            SetActiveButton(BtnServer);
             LogoBox.Focus();
         }
 
-        private void btnTest2_Click(object sender, EventArgs e)
+        private void BtnMailTools_Click(object sender, EventArgs e)
         {
-            OpenChildForm(TestForm);
+            OpenChildForm(MailForm);
+            SetActiveButton(BtnMailTools);
             LogoBox.Focus();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             OpenChildForm(ServerForm);
+            SetActiveButton(BtnServer);
             LogoBox.Focus();
-        }
-
-        private void header_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void header_MouseDown(object sender, MouseEventArgs e)
@@ -96,14 +96,16 @@ namespace kenexar_multi_tool
             }
         }
 
-        private void LogoBox_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BtnSettings_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(SettingsForm);
+            SetActiveButton(BtnSettings);
+            LogoBox.Focus();
         }
     }
 }
